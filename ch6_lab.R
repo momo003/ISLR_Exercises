@@ -220,10 +220,18 @@ coef(reg.best, which.min(mean.cv.errors))
 ##
 
 
-# Ridge Regression and the Lasso
+##   Ridge Regression and the Lasso
+##      |Y-bX|^2 + L|b|^2
 
-## 
 
+library(glmnet)
+
+## take care of missing data points
+Hitters = na.omit(Hitters)
+head(Hitters)
+x = model.matrix(Salary ~ . , Hitters)[,-1]
+fix(x)
+y = Hitters$Salary
 
 
 
